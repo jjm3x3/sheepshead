@@ -7,3 +7,6 @@ data Card = Card Value Suit deriving (Show)
 main = do
 	putStrLn "Hello Sheepshead"
 	putStrLn $ "Here is my first card: " ++ (show $ Card Queen Spades )
+
+allSuits = [Clubs ..]
+allValues = [Seven ..]
