@@ -1,7 +1,7 @@
 
 data Suit = Clubs | Spades | Hearts | Diamonds deriving (Show, Enum)
 -- should probably be called rank
-data Value = Seven | Eight | Nine | Ten | King | Jack | Queen deriving (Show, Enum)
+data Value = Seven | Eight | Nine | Ten | King | Ace | Jack | Queen deriving (Show, Enum)
 
 data Card = Card Value Suit deriving (Show)
 
