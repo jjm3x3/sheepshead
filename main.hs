@@ -1,9 +1,12 @@
 
+import System.Random
+
 data Suit = Clubs | Spades | Hearts | Diamonds deriving (Show, Enum)
 -- should probably be called rank
 data Value = Seven | Eight | Nine | Ten | King | Ace | Jack | Queen deriving (Show, Enum)
 
 data Card = Card Value Suit deriving (Show)
+
 
 main :: IO()
 main = do
@@ -19,3 +22,6 @@ allSuits = [Clubs ..]
 allValues = [Seven ..]
 
 makeDeck = [Card v s | v <- allValues, s <- allSuits ]
+
+
+createHand = take 10 $ randomRs (1::Int ,32) $ mkStdGen 100
