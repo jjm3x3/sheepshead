@@ -13,8 +13,9 @@ main = do
   putStrLn "Hello Sheepshead"
   putStrLn $ "Here is my first card: " ++ (show $ Card Queen Spades )
   
-removeAt 0 (x:xs) = (x,xs)
-removeAt n [] = (0, []) -- should do something more for out of bounds
+--removeAt :: (Eq a, Num a) => a -> [t] -> (t,[t])
+removeAt 0 (x:xs) = (Just x,xs)
+removeAt _ [] = (Nothing, []) -- should do something more for out of bounds
 removeAt n (x:xs) = let (out, rest) = removeAt (n-1) xs
                     in (out, x:rest)
 
@@ -23,5 +24,10 @@ allValues = [Seven ..]
 
 makeDeck = [Card v s | v <- allValues, s <- allSuits ]
 
+generateHandIdexes = take 10 $ randomRs (1::Int ,32) $ mkStdGen 100
 
-createHand = take 10 $ randomRs (1::Int ,32) $ mkStdGen 100
+createHand = constructHand makeDeck generateHandIdexes
+
+-- constructHand deck handIdexes
+constructHand deck (i:is) = let (aCard, restDeck) = removeAt i deck
+                            in aCard : constructHand restDeck is
