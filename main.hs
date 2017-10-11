@@ -5,9 +5,12 @@ data Value = Seven | Eight | Nine | Ten | King | Ace | Jack | Queen deriving (Sh
 
 data Card = Card Value Suit deriving (Show)
 
+main :: IO()
 main = do
 	putStrLn "Hello Sheepshead"
 	putStrLn $ "Here is my first card: " ++ (show $ Card Queen Spades )
 
 allSuits = [Clubs ..]
 allValues = [Seven ..]
+
+makeDeck = [Card v s | v <- allValues, s <- allSuits ]
