@@ -29,5 +29,7 @@ generateHandIdexes = take 10 $ randomRs (1::Int ,32) $ mkStdGen 100
 createHand = constructHand makeDeck generateHandIdexes
 
 -- constructHand deck handIdexes
+constructHand [] _ = []
+constructHand _ [] = []
 constructHand deck (i:is) = let (aCard, restDeck) = removeAt i deck
                             in aCard : constructHand restDeck is
