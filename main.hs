@@ -1,9 +1,9 @@
 
 import System.Random
 
-data Suit = Clubs | Spades | Hearts | Diamonds deriving (Show, Enum)
+data Suit = Clubs | Spades | Hearts | Diamonds deriving (Show, Enum, Eq, Ord)
 -- should probably be called rank
-data Value = Seven | Eight | Nine | Ten | King | Ace | Jack | Queen deriving (Show, Enum)
+data Value = Seven | Eight | Nine | Ten | King | Ace | Jack | Queen deriving (Show, Enum, Eq, Ord)
 
 data Card = Card Value Suit deriving (Show)
 
