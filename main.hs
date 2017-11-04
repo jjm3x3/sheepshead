@@ -13,7 +13,7 @@ main = do
   putStrLn "Hello Sheepshead"
   putStrLn $ "Here is my first card: " ++ (show $ Card Queen Spades )
   
---removeAt :: (Eq a, Num a) => a -> [t] -> (t,[t])
+removeAt :: (Eq a, Num a) => a -> [t] -> (Maybe t,[t])
 removeAt 0 (x:xs) = (Just x,xs)
 removeAt _ [] = (Nothing, []) -- should do something more for out of bounds
 removeAt n (x:xs) = let (out, rest) = removeAt (n-1) xs
@@ -29,6 +29,7 @@ generateHandIdexes = take 10 $ randomRs (1::Int ,32) $ mkStdGen 100
 createHand = constructHand makeDeck generateHandIdexes
 
 -- constructHand deck handIdexes
+constructHand :: [a] -> [Int] -> [Maybe a]
 constructHand [] _ = []
 constructHand _ [] = []
 constructHand deck (i:is) = let (aCard, restDeck) = removeAt (i `mod` (length deck)) deck
